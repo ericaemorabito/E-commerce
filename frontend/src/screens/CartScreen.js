@@ -13,7 +13,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 const CartScreen = ({ history }) => {
   // Get the id and qty from the URL
@@ -35,8 +35,12 @@ const CartScreen = ({ history }) => {
   }, [dispatch, id, qty]);
 
   const removeFromCartHandler = (id) => {
-    console.log("remove");
+    dispatch(removeFromCart(id))
   };
+
+  const checkoutHandler = () => {
+    history.push('/login?redirect=shipping')
+  }
 
   return (
     <Row>
@@ -91,7 +95,28 @@ const CartScreen = ({ history }) => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}></Col>
+      <Col md={4}>
+        <Card>
+          <ListGroupItem>
+            <h2>
+              Subtotal ({cartItems.reduce((acc, items) => acc + items.qty, 0)}) items
+            </h2>
+            $  {cartItems
+                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)}
+          </ListGroupItem>
+          <ListGroupItem>
+            <Button
+              type='button'
+              className='btn-block'
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
+              >
+                Proceed to Checkout
+            </Button>
+          </ListGroupItem>
+        </Card>
+      </Col>
     </Row>
   );
 };
