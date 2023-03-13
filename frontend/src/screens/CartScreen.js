@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -20,6 +20,7 @@ const CartScreen = ({ history }) => {
   const { id } = useParams();
   const location = useLocation();
   const qty = new URLSearchParams(location.search).get("qty");
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ const CartScreen = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping')
+    navigate('/shipping'); //v6
   }
 
   return (

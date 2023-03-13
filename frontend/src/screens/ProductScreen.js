@@ -21,7 +21,7 @@ const ProductScreen = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useNavigate()
+  const history = useNavigate(); // v6
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
