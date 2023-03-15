@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
 import CheckoutSteps from "../components/CheckoutSteps.js";
 import { createOrder } from '../actions/orderActions.js'
-// import { ORDER_CREATE_RESET } from '../constants/orderConstants'
-// import { USER_DETAILS_RESET } from '../constants/userConstants'
 
 const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
@@ -30,12 +28,12 @@ const PlaceOrderScreen = () => {
   const { order, success, error } = orderCreate
 
   useEffect(() => {
-    if (success) {
-      navigate(`/order/${order._id}`);
-      // dispatch({ type: USER_DETAILS_RESET })
-      // dispatch({ type: ORDER_CREATE_RESET })
-    }
-    // eslint-disable-next-line
+    // if (success) {
+    //   navigate(`/orders/${order._id}`);
+    //   // dispatch({ type: USER_DETAILS_RESET })
+    //   // dispatch({ type: ORDER_CREATE_RESET })
+    // }
+    // // eslint-disable-next-line
   }, [success])
 
   const placeOrderHandler = () => {
@@ -50,6 +48,8 @@ const PlaceOrderScreen = () => {
         totalPrice: cart.totalPrice,
       })
     )
+
+    navigate(`/orders/${order._id}`);
   }
 
   return (
@@ -62,9 +62,9 @@ const PlaceOrderScreen = () => {
               <h2>Shipping</h2>
               <p>
                 <strong>Address:</strong>
-                {/* {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
+                {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
                 {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.country} */}
+                {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
 

@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
 
-// Create new products --> POST /api/orders
+// Create new order --> POST /api/orders
 const addOrderItems = asyncHandler(async (req, res) => {
   const {
     orderItems,
@@ -35,4 +35,17 @@ const addOrderItems = asyncHandler(async (req, res) => {
   }
 });
 
-export { addOrderItems }
+// GET order by id --> GET /api/orders/:id
+const getOrderById = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    res.json(order)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+});
+
+
+export { addOrderItems, getOrderById }
