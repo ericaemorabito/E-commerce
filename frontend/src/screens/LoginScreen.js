@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
+import CheckoutSteps from "../components/CheckoutSteps";
 import { login } from "../actions/userActions";
 
 const LoginScreen = () => {
@@ -33,7 +34,9 @@ const LoginScreen = () => {
   };
 
   return (
-    <FormContainer>
+<>
+<CheckoutSteps step1 />
+<FormContainer>
       <h1>Sign In</h1>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
@@ -66,12 +69,14 @@ const LoginScreen = () => {
       <Row className="py-3">
         <Col>
           New Customer?{" "}
-          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+          <Link to={`/register`}>
             Register
           </Link>
         </Col>
       </Row>
     </FormContainer>
+</>
+
   );
 };
 

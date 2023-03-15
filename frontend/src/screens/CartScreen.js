@@ -40,7 +40,7 @@ const CartScreen = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    navigate('/shipping'); //v6
+    navigate('/shipping');
   }
 
   return (

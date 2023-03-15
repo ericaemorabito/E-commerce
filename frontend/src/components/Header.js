@@ -29,7 +29,8 @@ const Header = () => {
                   <icon className="fas fa-shopping-cart"></icon>Cart
                 </Nav.Link>
               </LinkContainer>
-              {userInfo ? (
+
+              {/* {userInfo ? (
                 <NavDropdown title={userInfo.user} id='username'>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
@@ -46,7 +47,7 @@ const Header = () => {
                 <Nav.Link>
                   <icon className="fas fa-user"></icon>Sign In
                 </Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
